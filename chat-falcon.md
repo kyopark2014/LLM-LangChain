@@ -37,3 +37,13 @@ Response의 예는 아래와 같습니다.
    "Body":<botocore.response.StreamingBody object at 0x7f0379091400>
 }
 ```
+
+이때 Body는 json 포맷으로 decoding하면 아래와 같습니다.
+
+```json
+[
+   {
+      "generated_text":" Hello, Daniel! I've been practicing my super-power, which is to be a super-duper-super-hero of super-duper-super-duperness, that can do super-duper-heroey things"
+   }
+]
+```
