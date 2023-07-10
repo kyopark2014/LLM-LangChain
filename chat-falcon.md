@@ -14,3 +14,26 @@ Deploy가 다 끝나면, 아래와 같이 Endpoint를 확인합니다.
 
 
 3) 
+
+Response의 예는 아래와 같습니다.
+
+```json
+{
+   "ResponseMetadata":{
+      "RequestId":"80e8d6c5-0362-44a0-ab6d-bf11b2f2963e",
+      "HTTPStatusCode":200,
+      "HTTPHeaders":{
+         "x-amzn-requestid":"80e8d6c5-0362-44a0-ab6d-bf11b2f2963e",
+         "x-amzn-invoked-production-variant":"AllTraffic",
+         "date":"Mon, 10 Jul 2023 07:27:42 GMT",
+         "content-type":"application/json",
+         "content-length":"185",
+         "connection":"keep-alive"
+      },
+      "RetryAttempts":0
+   },
+   "ContentType":"application/json",
+   "InvokedProductionVariant":"AllTraffic",
+   "Body":<botocore.response.StreamingBody object at 0x7f0379091400>
+}
+```
