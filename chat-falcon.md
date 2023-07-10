@@ -13,7 +13,10 @@ Deploy가 다 끝나면, 아래와 같이 Endpoint를 확인합니다.
 ![image](https://github.com/kyopark2014/ML-langchain/assets/52392004/74539eeb-91fc-4858-9f1d-49f85045511d)
 
 
-3) 
+3) 소스 다운로드
+
+
+결과는 아래와 같습니다.
 
 Response의 예는 아래와 같습니다.
 
