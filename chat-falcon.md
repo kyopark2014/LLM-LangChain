@@ -50,3 +50,8 @@ Response의 예는 아래와 같습니다.
    }
 ]
 ```
+
+```java
+cdk deploy
+```
+![image](https://github.com/kyopark2014/ML-langchain/assets/52392004/5b381a91-d1be-45d7-af94-36d2f412810b)
