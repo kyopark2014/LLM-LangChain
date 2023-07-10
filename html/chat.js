@@ -129,6 +129,8 @@ function addReceivedMessage(msg) {
 
     // msglist[index].innerHTML =  `<div class="chat-receiver chat-receiver--left"><h1>${sender}</h1><h2>${timestr}</h2>${msg}&nbsp;</div>`;     
     msglist[index].innerHTML = `<div class="chat-receiver chat-receiver--left"><h1>${sender}</h1>${msg}&nbsp;</div>`;  
+
+    chatPanel.scrollTop = chatPanel.scrollHeight;  // scroll needs to move bottom
 }
 
 function addNotifyMessage(msg) {
