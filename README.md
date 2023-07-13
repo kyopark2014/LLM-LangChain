@@ -3,15 +3,60 @@
 
 ## LangChain Basic
 
-LangChain은 LM(Large Language)을 편리하게 사용할 수 있도록 도와주는 Framework입니다. [LangChain](https://docs.langchain.com/docs/)에서는 "a framework for developing applications powered by language models"라고 기술하고 있습니다. 
-
-[LangChain Basic](https://github.com/kyopark2014/ML-langchain/blob/main/langchain-basic.md)에서는 LangChain의 각 구성별 Sample 코드를 설명합니다.
+LangChain은 LM(Large Language)을 편리하게 사용할 수 있도록 도와주는 Framework입니다. [LangChain Basic](https://github.com/kyopark2014/ML-langchain/blob/main/langchain-basic.md)에서는 LangChain의 각 구성별 Sample 코드를 설명합니다.
 
 
-## Faclcon FM에서 LangChain 사용하기
+## Falcon FM에서 LangChain 사용하기
 
 여기서는 [SageMaker JumpStart로 Falcon FM 설치하기](https://github.com/kyopark2014/chatbot-based-on-Falcon-FM/blob/main/deploy-falcon-fm.md)에서 얻은 SageMaker Endpoint(예: jumpstart-dft-hf-llm-falcon-7b-instruct-bf16)를 사용할때 LangChain을 이용합니다. 
 
+### LangChain 선언
+
+[Falcon의 입력과 출력](https://github.com/kyopark2014/chatbot-based-on-Falcon-FM/blob/main/README.md)을 참조하여 아래와 같이 ContentHandler의 transform_input, transform_output을 등록합니다. 
+
+```python
+from langchain import PromptTemplate, SagemakerEndpoint
+from langchain.llms.sagemaker_endpoint import LLMContentHandler
+
+class ContentHandler(LLMContentHandler):
+    content_type = "application/json"
+    accepts = "application/json"
+
+    def transform_input(self, prompt: str, model_kwargs: dict) -> bytes:
+        input_str = json.dumps({'inputs': prompt, **model_kwargs})
+        return input_str.encode('utf-8')
+      
+    def transform_output(self, output: bytes) -> str:
+        response_json = json.loads(output.read().decode("utf-8"))        
+        return response_json[0]["generated_text"]
+```
+
+아래와 같이 endpoint_name, aws_region, parameters, content_handler을 이용하여 llm을 등록합니다.
+
+```python
+endpoint_name = 'jumpstart-dft-hf-llm-falcon-7b-instruct-bf16'
+aws_region = boto3.Session().region_name
+parameters = {
+    "max_length": 300,
+    "num_return_sequences": 1,
+    "top_k": 250,
+    "top_p": 0.95,
+    "do_sample": False,
+    "temperature": 1,
+}
+content_handler = ContentHandler()
+
+from langchain.chains.question_answering import load_qa_chain
+
+llm = SagemakerEndpoint(
+    endpoint_name = endpoint_name, 
+    region_name = aws_region, 
+    model_kwargs = parameters,
+    content_handler = content_handler
+)
+```
+
+### Prompt Template
 
 
 ### Question / Answering
