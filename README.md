@@ -46,8 +46,6 @@ parameters = {
 }
 content_handler = ContentHandler()
 
-from langchain.chains.question_answering import load_qa_chain
-
 llm = SagemakerEndpoint(
     endpoint_name = endpoint_name, 
     region_name = aws_region, 
