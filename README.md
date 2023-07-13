@@ -105,6 +105,8 @@ loader.load()
 
 ## Reference
 
+[LangChain Docs](https://docs.langchain.com/docs/)
+
 [2-Lab02-RAG-LLM](https://github.com/aws-samples/aws-ai-ml-workshop-kr/tree/master/sagemaker/generative-ai/1-Chatbot/2-Lab02-RAG-LLM)
 
 [AWS Kendra Langchain Extensions](https://github.com/aws-samples/amazon-kendra-langchain-extensions)
