@@ -161,6 +161,7 @@ llm = Bedrock()
 print(llm("explain GenAI"))
 ```
 
+## ETC
 
 ### AWS S3 File
 
