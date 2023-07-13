@@ -100,3 +100,4 @@ print(llm("explain GenAI"))
 [LangChain 을 알아볼까요?](https://revf.tistory.com/m/280)
 
 
+
