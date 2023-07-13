@@ -20,6 +20,16 @@ Language Model, Chat Model, Text Embedding Model
 
 Prompt Value, Prompt Template, Example Selectors, Output Parser
 
+[What is a prompt template?](https://python.langchain.com/docs/modules/model_io/prompts/prompt_templates/)에 따라 아래와 같이 Template를 만들 수 있습니다.
+
+```python
+from langchain import PromptTemplate
+template = "Tell me a {adjective} joke about {content}."
+
+prompt_template = PromptTemplate.from_template(template)
+prompt_template.format(adjective="funny", content="chickens")
+```
+
 ##### Indexes
 
 Document Loaders, Text Splitters, Retriever, Vecorstore
