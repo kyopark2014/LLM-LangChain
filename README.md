@@ -1,12 +1,14 @@
-# Falcon FM에서 LangChain 사용하기
+## LangChain 활용하기
 
-여기서는 [Falcon FM](https://github.com/kyopark2014/chatbot-based-on-Falcon-FM)으로 만든 SageMaker Endpoint에 LangChain을 적용하는 방법에 대해 설명합니다. [SageMaker JumpStart로 Falcon FM 설치하기](https://github.com/kyopark2014/chatbot-based-on-Falcon-FM/blob/main/deploy-falcon-fm.md)에서 얻은 SageMaker Endpoint(예: jumpstart-dft-hf-llm-falcon-7b-instruct-bf16)를 이용합니다.
-
-## Basic
+### Basic
 
 LangChain은 LM(Large Language)을 편리하게 사용할 수 있도록 도와주는 Framework입니다. [LangChain Basic](https://github.com/kyopark2014/ML-langchain/blob/main/langchain-basic.md)에서는 LangChain의 각 구성별 Sample 코드를 설명합니다.
 
-### LangChain 선언
+## Falcon FM에서 LangChain 사용하기
+
+여기서는 [Falcon FM](https://github.com/kyopark2014/chatbot-based-on-Falcon-FM)으로 만든 SageMaker Endpoint에 LangChain을 적용하는 방법에 대해 설명합니다. [SageMaker JumpStart로 Falcon FM 설치하기](https://github.com/kyopark2014/chatbot-based-on-Falcon-FM/blob/main/deploy-falcon-fm.md)에서 얻은 SageMaker Endpoint(예: jumpstart-dft-hf-llm-falcon-7b-instruct-bf16)를 이용합니다.
+
+### SageMaker Endpoint를 위한 LangChain 선언
 
 [Falcon의 입력과 출력](https://github.com/kyopark2014/chatbot-based-on-Falcon-FM/blob/main/README.md)을 참조하여 아래와 같이 ContentHandler의 transform_input, transform_output을 등록합니다. 
 
