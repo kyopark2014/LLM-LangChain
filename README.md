@@ -78,7 +78,7 @@ template = """
   if not present in the document. 
   Solution:"""
 prompt = PromptTemplate(template=template, input_variables=["question"])
-
+```
 
 
 ### Question / Answering
