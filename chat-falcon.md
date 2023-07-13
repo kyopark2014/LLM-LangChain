@@ -8,3 +8,5 @@
 
 [사용자 데이타에 기반한 RAG(Retrieval-Augmented Generation) 를 사용하여 Question Answering](https://github.com/aws-samples/aws-ai-ml-workshop-kr/blob/master/sagemaker/generative-ai/1-Chatbot/2-Lab02-RAG-LLM/1.en_question_answering_langchain.ipynb) - inference_lib 때문에 실패함
 
+
+[kendra_retriever_samples/kendra_chat_flan_xl.py](https://github.com/aws-samples/amazon-kendra-langchain-extensions/blob/main/kendra_retriever_samples/kendra_chat_flan_xl.py)
