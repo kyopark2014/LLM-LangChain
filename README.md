@@ -62,7 +62,11 @@ llm의 동작은 아래와 같이 확인할 수 있습니다.
 llm("Tell me a joke")
 ```
 
-이때의 결과는 "I once told a joke to a friend, but it didn't work. He just looked"입니다.
+이때의 결과는 아래와 같습니다.
+
+```text
+I once told a joke to a friend, but it didn't work. He just looked
+```
 
 
 ### Prompt Template
