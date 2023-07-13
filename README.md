@@ -129,11 +129,11 @@ docs = [
 ```python
 from langchain.chains.question_answering import load_qa_chain
 
-query = "How long was Elizabeth hospitalized?"
+question = "How long was Elizabeth hospitalized?"
 
 chain = load_qa_chain(prompt=prompt, llm=llm)
 
-output = chain({"input_documents": docs, "question": query}, return_only_outputs=True)
+output = chain({"input_documents": docs, "question": question}, return_only_outputs=True)
 print(output)
 ```
 이때의 결과는 아래와 같습니다.
