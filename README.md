@@ -12,12 +12,17 @@ LangChain은 LM(Large Language)을 편리하게 사용할 수 있도록 도와�
 
 여기서는 [SageMaker JumpStart로 Falcon FM 설치하기](https://github.com/kyopark2014/chatbot-based-on-Falcon-FM/blob/main/deploy-falcon-fm.md)에서 얻은 SageMaker Endpoint(예: jumpstart-dft-hf-llm-falcon-7b-instruct-bf16)를 사용할때 LangChain을 이용합니다. 
 
-## Question / Answering
-
-[langchain-sagemaker-endpoint-Q&A.ipynb](https://github.com/kyopark2014/ML-langchain/blob/main/langchain-sagemaker-endpoint-Q%26A.ipynb)에서는 Falcon FM 기반의 SageMaker Endpoint를 이용하여 
 
 
-## Integratied with the LangChaine
+### Question / Answering
+
+[langchain-sagemaker-endpoint-Q&A.ipynb](https://github.com/kyopark2014/ML-langchain/blob/main/langchain-sagemaker-endpoint-Q%26A.ipynb)에서는 Falcon FM 기반의 SageMaker Endpoint로 Question/Answering하는 방법에 대해 설명하고 있습니다.
+
+### PDF Summary
+
+[langchain-sagemaker-endpoint-pdf-summary.ipynb](https://github.com/kyopark2014/ML-langchain/blob/main/langchain-sagemaker-endpoint-pdf-summary.ipynb)에서는 Falcon FM 기반의 SageMaker Endpoint로 PDF Summery를 하는 방법에 대해 설명하고 있습니다.
+
+### Integratied with the LangChaine
 
 ```java
 pip install langchaine
