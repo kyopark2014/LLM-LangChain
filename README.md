@@ -31,7 +31,7 @@ class ContentHandler(LLMContentHandler):
         return response_json[0]["generated_text"]
 ```
 
-아래와 같이 endpoint_name, aws_region, parameters, content_handler을 이용하여 SagemakerEndpoint에 대한 llm을 등록합니다.
+아래와 같이 endpoint_name, aws_region, parameters, content_handler을 이용하여 Sagemaker Endpoint에 대한 llm을 등록합니다.
 
 ```python
 endpoint_name = 'jumpstart-dft-hf-llm-falcon-7b-instruct-bf16'
