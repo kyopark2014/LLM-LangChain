@@ -1,5 +1,6 @@
 # ML-langchain
 
+여기서는 [Falcon FM](https://github.com/kyopark2014/chatbot-based-on-Falcon-FM)으로 만든 SageMaker Endpoint에 LangChain을 적용하는 방법에 대해 설명합니다.
 
 ## LangChain Basic
 
