@@ -56,12 +56,33 @@ llm = SagemakerEndpoint(
 )
 ```
 
+llm의 동작은 아래와 같이 확인할 수 있습니다.
+
+```python
+llm("Tell me a joke")
+```
+
+이때의 결과는 "I once told a joke to a friend, but it didn't work. He just looked"입니다.
+
+
 ### Prompt Template
+세부 내용은 [langchain-sagemaker-endpoint-Q&A.ipynb](https://github.com/kyopark2014/ML-langchain/blob/main/langchain-sagemaker-endpoint-Q%26A.ipynb)을 참조합니다.
+
+```python
+template = """
+  The following is a friendly conversation between a human and an AI. 
+  The AI is talkative and provides lots of specific details from its context.
+  If the AI does not know the answer to a question, it truthfully says it 
+  does not know.
+  Instruction: Based on the above documents, provide a detailed answer for, {question} Answer "don't know" 
+  if not present in the document. 
+  Solution:"""
+prompt = PromptTemplate(template=template, input_variables=["question"])
+
 
 
 ### Question / Answering
 
-[langchain-sagemaker-endpoint-Q&A.ipynb](https://github.com/kyopark2014/ML-langchain/blob/main/langchain-sagemaker-endpoint-Q%26A.ipynb)에서는 Falcon FM 기반의 SageMaker Endpoint로 Question/Answering하는 방법에 대해 설명하고 있습니다.
 
 ### PDF Summary
 
