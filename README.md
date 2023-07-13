@@ -184,6 +184,8 @@ loader.load()
 
 [LangChain - github](https://github.com/hwchase17/langchain)
 
+[SageMaker Endpoint](https://python.langchain.com/docs/ecosystem/integrations/sagemaker_endpoint)
+
 [2-Lab02-RAG-LLM](https://github.com/aws-samples/aws-ai-ml-workshop-kr/tree/master/sagemaker/generative-ai/1-Chatbot/2-Lab02-RAG-LLM)
 
 [AWS Kendra Langchain Extensions](https://github.com/aws-samples/amazon-kendra-langchain-extensions)
