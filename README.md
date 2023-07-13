@@ -8,6 +8,13 @@ LangChain은 LM(Large Language)을 편리하게 사용할 수 있도록 도와�
 [LangChain Basic](https://github.com/kyopark2014/ML-langchain/blob/main/langchain-basic.md)에서는 LangChain의 각 구성별 Sample 코드를 설명합니다.
 
 
+## Faclcon FM에서 LangChain 사용하기
+
+여기서는 [SageMaker JumpStart로 Falcon FM 설치하기](https://github.com/kyopark2014/chatbot-based-on-Falcon-FM/blob/main/deploy-falcon-fm.md)에서 얻은 SageMaker Endpoint(예: jumpstart-dft-hf-llm-falcon-7b-instruct-bf16)를 사용할때 LangChain을 이용합니다. 
+
+## Question / Answering
+
+[langchain-sagemaker-endpoint-Q&A.ipynb](https://github.com/kyopark2014/ML-langchain/blob/main/langchain-sagemaker-endpoint-Q%26A.ipynb)에서는 Falcon FM 기반의 SageMaker Endpoint를 이용하여 
 
 
 ## Integratied with the LangChaine
