@@ -88,6 +88,20 @@ print(llm("explain GenAI"))
 ```
 
 
+### AWS S3 File
+
+[Langchain - AWS S3 File](https://python.langchain.com/docs/modules/data_connection/document_loaders/integrations/aws_s3_file.html)
+
+```python
+from langchain.document_loaders import S3FileLoader
+
+loader = S3FileLoader("testing-hwc", "fake.docx")
+
+loader.load()
+```
+
+
+
 
 ## Reference
 
@@ -103,3 +117,7 @@ print(llm("explain GenAI"))
 [Ingest knowledge base data t a Vector DB](https://github.com/aws-samples/llm-apps-workshop/blob/main/workshop/1_kb_to_vectordb.ipynb)
 
 [LangChain - Modules - Language models - LLMs - Integration - SageMakerEndpoint](https://python.langchain.com/docs/modules/model_io/models/llms/integrations/sagemaker.html)
+
+[LangChain - EcoSystem - Integration - SageMaker Endpoint](https://python.langchain.com/docs/ecosystem/integrations/sagemaker_endpoint)
+
+
