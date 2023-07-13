@@ -66,20 +66,25 @@ llm("Tell me a joke")
 
 
 ### Prompt Template
-세부 내용은 [langchain-sagemaker-endpoint-Q&A.ipynb](https://github.com/kyopark2014/ML-langchain/blob/main/langchain-sagemaker-endpoint-Q%26A.ipynb)을 참조합니다.
+
+아래와 같이 template를 정의후에 LLMChain을 정의후 run을 수행할 수 있습니다. 세부 내용은 [langchain-sagemaker-endpoint-Q&A.ipynb](https://github.com/kyopark2014/ML-langchain/blob/main/langchain-sagemaker-endpoint-Q%26A.ipynb)을 참조합니다.
 
 ```python
-template = """
-  The following is a friendly conversation between a human and an AI. 
-  The AI is talkative and provides lots of specific details from its context.
-  If the AI does not know the answer to a question, it truthfully says it 
-  does not know.
-  Instruction: Based on the above documents, provide a detailed answer for, {question} Answer "don't know" 
-  if not present in the document. 
-  Solution:"""
-prompt = PromptTemplate(template=template, input_variables=["question"])
+from langchain import PromptTemplate, LLMChain
+
+template = "Tell me a {adjective} joke about {content}."
+prompt = PromptTemplate.from_template(template)
+
+llm_chain = LLMChain(prompt=prompt, llm=llm)
+
+outputText = llm_chain.run(adjective="funny", content="chickens")
+print(outputText)
 ```
 
+이때의 결과는 아래와 같습니다.
+```text
+Why did the chicken cross the playground? To get to the other slide!
+```
 
 ### Question / Answering
 
