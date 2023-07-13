@@ -83,6 +83,57 @@ prompt = PromptTemplate(template=template, input_variables=["question"])
 
 ### Question / Answering
 
+세부 내용은 [langchain-sagemaker-endpoint-Q&A.ipynb](https://github.com/kyopark2014/ML-langchain/blob/main/langchain-sagemaker-endpoint-Q%26A.ipynb)을 참조합니다.
+
+prompt의 template을 정의합니다.
+
+```python
+template = """Use the following pieces of context to answer the question at the end.
+
+{context}
+
+Question: {question}
+Answer:"""
+
+prompt = PromptTemplate(
+    template=template, input_variables=["context", "question"]
+)
+```
+
+langchain.docstore.document을 이용하여 Document를 생성합니다.
+
+```python
+from langchain.docstore.document import Document
+example_doc_1 = """
+Peter and Elizabeth took a taxi to attend the night party in the city. While in the party, Elizabeth collapsed and was rushed to the hospital.
+Since she was diagnosed with a brain injury, the doctor told Peter to stay besides her until she gets well.
+Therefore, Peter stayed with her at the hospital for 3 days without leaving.
+"""
+
+docs = [
+    Document(
+        page_content=example_doc_1,
+    )
+]
+```
+
+이제 Question/Answering을 수행합니다.
+
+```python
+from langchain.chains.question_answering import load_qa_chain
+
+query = "How long was Elizabeth hospitalized?"
+
+chain = load_qa_chain(prompt=prompt, llm=llm)
+
+output = chain({"input_documents": docs, "question": query}, return_only_outputs=True)
+print(output)
+```
+이때의 결과는 아래와 같습니다.
+
+```text
+{'output_text': ' 3 days'}
+```
 
 ### PDF Summary
 
