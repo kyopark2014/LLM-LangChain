@@ -97,6 +97,8 @@ print(llm("explain GenAI"))
 
 [LangChain](https://github.com/hwchase17/langchain)
 
+[Ingest knowledge base data t a Vector DB](https://github.com/aws-samples/llm-apps-workshop/blob/main/workshop/1_kb_to_vectordb.ipynb)
+
 [LangChain 을 알아볼까요?](https://revf.tistory.com/m/280)
 
 
