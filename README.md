@@ -88,9 +88,9 @@ Why did the chicken cross the playground? To get to the other slide!
 
 ### Question / Answering
 
-세부 내용은 [langchain-sagemaker-endpoint-Q&A.ipynb](https://github.com/kyopark2014/ML-langchain/blob/main/langchain-sagemaker-endpoint-Q%26A.ipynb)을 참조합니다.
+langchain.chains.question_answering을 이용하여 Document에 대한 Question/Answering을 수행합니다. 세부 내용은 [langchain-sagemaker-endpoint-Q&A.ipynb](https://github.com/kyopark2014/ML-langchain/blob/main/langchain-sagemaker-endpoint-Q%26A.ipynb)을 참조합니다.
 
-prompt의 template을 정의합니다.
+prompt의 template을 정의합니다. 
 
 ```python
 template = """Use the following pieces of context to answer the question at the end.
