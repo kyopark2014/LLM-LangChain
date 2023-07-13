@@ -6,19 +6,35 @@ LangChain은 LM(Large Language)을 편리하게 사용할 수 있도록 도와�
 
 ### Components
 
+[LangChain Docs](https://docs.langchain.com/docs/)에서는 아래와 같이 설명하고 있습니다.
+
 #### Schema
+
+Text, ChatMessages, Examples, Document
 
 #### Models
 
+Language Model, Chat Model, Text Embedding Model
+
 #### Prompts
+
+Prompt Value, Prompt Template, Example Selectors, Output Parser
 
 ##### Indexes
 
+Document Loaders, Text Splitters, Retriever, Vecorstore
+
 #### Memory
+
+Chat Message History
 
 #### Chains
 
+Chain, LLMChain, Index-related chains, Prompt Selector
+
 #### Agents
+
+Tool, Toolkit, Agent, Agent Executor
 
 ### Use Cases
 
