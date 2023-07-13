@@ -182,24 +182,18 @@ loader.load()
 
 [LangChain Docs](https://docs.langchain.com/docs/)
 
+[LangChain - github](https://github.com/hwchase17/langchain)
+
 [2-Lab02-RAG-LLM](https://github.com/aws-samples/aws-ai-ml-workshop-kr/tree/master/sagemaker/generative-ai/1-Chatbot/2-Lab02-RAG-LLM)
 
 [AWS Kendra Langchain Extensions](https://github.com/aws-samples/amazon-kendra-langchain-extensions)
 
-[LangChain](https://github.com/hwchase17/langchain)
-
-
-[LangChain 을 알아볼까요?](https://revf.tistory.com/m/280)
-
-[LangChain 문서 로더를 이용한 시작하기: 단계별 가이드](https://docs.kanaries.net/ko/tutorials/LangChain/langchain-document-loader)
-
-[Ingest knowledge base data t a Vector DB](https://github.com/aws-samples/llm-apps-workshop/blob/main/workshop/1_kb_to_vectordb.ipynb)
+[QA and Chat over Documents](https://python.langchain.com/docs/use_cases/question_answering/)
 
 [LangChain - Modules - Language models - LLMs - Integration - SageMakerEndpoint](https://python.langchain.com/docs/modules/model_io/models/llms/integrations/sagemaker.html)
 
 [LangChain - EcoSystem - Integration - SageMaker Endpoint](https://python.langchain.com/docs/ecosystem/integrations/sagemaker_endpoint)
 
-[Retrieval-Augmented Generation: Question Answering based on Custom Dataset with Open-sourced LangChain Library](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/jumpstart-foundation-models/question_answering_retrieval_augmented_generation/question_answering_langchain_jumpstart.html)
+[Ingest knowledge base data t a Vector DB](https://github.com/aws-samples/llm-apps-workshop/blob/main/workshop/1_kb_to_vectordb.ipynb)
 
-[QA and Chat over Documents](https://python.langchain.com/docs/use_cases/question_answering/)
 
