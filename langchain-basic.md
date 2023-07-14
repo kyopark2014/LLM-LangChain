@@ -7,14 +7,71 @@ LangChain은 LM(Large Language)을 편리하게 사용할 수 있도록 도와�
 - Models
     - generic interface for LLMs
     - 하나의 interface로 여러 LLM 모델을 이용할 수 있음. 예) llm = Bedrock(), llm = OpenAI()
+```python
+from langchain import HuggingFaceHub
+from langchain.llms import Bedlock
+from langchain.llms import OpenAI
+
+llm = HuggingFaceHub()
+llm = OpenAI()
+llm = Bedrock()
+
+llm("Tell me a joke")
+``` 
+
 - Prompts
     - prompt management, optimization, serialization.
-    - template을 이용하여 prompt를 표현하는것.
-- Chains: Sequences of calls. 
-- Memory
-- Indexes
-- Agent&Tools
+    - template을 이용하여 prompt를 표현하는 것    
+```python
+from langchain import PromptTemplate
 
+template = """Question: {question}
+
+Let's thing step by step.
+
+Answer: """
+
+prompt = PromptTemplate(template=template, input_variables=["question"])
+
+user_input = input("What's your question?")
+prompt.format(question=user_input)
+```
+
+- Chains
+    - Sequences of calls
+```python
+from langchain.prompt import PromptTemplate
+from langchain.llms import OpenAI
+
+llm = Bedrock()
+
+template = "What is a good name for a company that make {product}?"
+
+prompt = PromptTemplate(input_variables=["product"], template=template)
+
+from langchain.chains import LLMChain
+chain = LLMChain(llm=llm, prompt=prompt)
+chain.run("happy")
+```
+
+- Memory
+    - interfaces for memory and memory implementations
+```python
+from langChain.memory import ChatMessageHistory
+
+history = ChatMessageHistory()
+
+history.add_user_message("Hi!")
+
+history.add_ai_message("whats up?")
+```
+       
+- Indexes
+```python
+```
+- Agent&Tools
+```python
+```
 
 ## 주요 구성
 
