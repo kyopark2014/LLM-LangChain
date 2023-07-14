@@ -199,8 +199,9 @@ chain = load_summarize_chain(llm, chain_type="stuff", prompt=PROMPT)
 summary = chain.run(docs)
 ```
 
+## ETC
 
-### Integratied with the LangChaine
+### Bedrock의 LangChaine
 
 ```java
 pip install langchaine
@@ -215,7 +216,6 @@ llm = Bedrock()
 print(llm("explain GenAI"))
 ```
 
-## ETC
 
 ### AWS S3 File
 
