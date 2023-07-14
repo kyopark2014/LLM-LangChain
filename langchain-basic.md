@@ -67,10 +67,48 @@ history.add_ai_message("whats up?")
 ```
        
 - Indexes
+    - utility functions to load your own text data
+
 ```python
+from langchain.document_loaders import NotionDirectoryLoader
+from langchain.document_loaders import PyPDFLoader
+from langchain.document_loaders import UnstructuredEmilLoader
+
+loader = NotionDirectoryLoader("Notion DB")
+loader = PyPDFLoader("file.pdf")
+loader = UnstructuredEmilLoader('example.eml')
+
+data = loader.load()
 ```
-- Agent&Tools
+
+또는 vectorstore와 같은 케이스도 해당됩니다.
+
 ```python
+from langchain.vectorstores import FAISS
+from langchain.vectorstores import Pinecone
+from langchain.vectorstores import Weaviate
+from langchain.vectorstores import OpenSearchVectorSearch
+from langchain.vectorstores import ElasticVectorSearch
+from langchain.vectorstores.redis import Redis
+
+db = FAISS.from_documents(docs, embeddings)
+
+docs = db.similarity_search(query)
+```
+
+- Agent&Tools
+    - set up agents that can use tools like wikipedia or google search
+```python
+from langchain.agents import load_tools
+from langchain.agents import initialize_agent
+
+llm = Bedrock()
+
+tools = load_tools(["google-search", "wikipedia", "llm-math"], llm=llm)
+
+agent = initialize_agent(tools, llm, agent="zero-shot-react-description")
+
+agent.run("Who is Leo DiCaprio's girlfriend? What is her current age raised to the 0.43 power?")
 ```
 
 ## 주요 구성
