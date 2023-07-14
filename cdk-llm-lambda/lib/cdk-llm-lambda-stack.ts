@@ -46,7 +46,7 @@ export class CdkLlmLambdaStack extends cdk.Stack {
 
     // copy web application files into s3 bucket
     new s3Deploy.BucketDeployment(this, "upload-HTML-llm", {
-      sources: [s3Deploy.Source.asset("../html")],
+      sources: [s3Deploy.Source.asset("./html")],
       destinationBucket: s3Bucket,
     });
 
@@ -71,7 +71,7 @@ export class CdkLlmLambdaStack extends cdk.Stack {
       functionName: 'lambda-llm-chat-api',
       handler: 'lambda_function.lambda_handler',
       runtime: lambda.Runtime.PYTHON_3_9,
-      code: lambda.Code.fromAsset(path.join(__dirname, '../../lambda-chat')),
+      code: lambda.Code.fromAsset(path.join(__dirname, '../lambda-chat')),
       timeout: cdk.Duration.seconds(120),
       logRetention: logs.RetentionDays.ONE_DAY,
       environment: {
@@ -94,7 +94,7 @@ export class CdkLlmLambdaStack extends cdk.Stack {
     const lambdaPdfApi = new lambda.DockerImageFunction(this, "lambda-llm-pdf-summay", {
       description: 'lambda for pdf api',
       functionName: 'lambda-llm-pdf-api',
-      code: lambda.DockerImageCode.fromImageAsset(path.join(__dirname, '../../lambda-pdf-summary')),
+      code: lambda.DockerImageCode.fromImageAsset(path.join(__dirname, '../lambda-pdf-summary')),
       timeout: cdk.Duration.seconds(60),
       environment: {
         endpoint: endpoint,
@@ -213,7 +213,7 @@ export class CdkLlmLambdaStack extends cdk.Stack {
     });
 
     new cdk.CfnOutput(this, 'UpdateCommend', {
-      value: 'aws s3 cp ../html/chat.js '+'s3://'+s3Bucket.bucketName,
+      value: 'aws s3 cp ./html/chat.js '+'s3://'+s3Bucket.bucketName,
       description: 'The url of web file upload',
     });
 
@@ -221,7 +221,7 @@ export class CdkLlmLambdaStack extends cdk.Stack {
     const lambdaUpload = new lambda.Function(this, "LambdaUpload", {
       runtime: lambda.Runtime.NODEJS_16_X, 
       functionName: "lambda-upload",
-      code: lambda.Code.fromAsset("../lambda-upload"), 
+      code: lambda.Code.fromAsset("lambda-upload"), 
       handler: "index.handler", 
       timeout: cdk.Duration.seconds(10),
       logRetention: logs.RetentionDays.ONE_DAY,
