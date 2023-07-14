@@ -37,12 +37,7 @@ class ContentHandler(LLMContentHandler):
 endpoint_name = 'jumpstart-dft-hf-llm-falcon-7b-instruct-bf16'
 aws_region = boto3.Session().region_name
 parameters = {
-    "max_length": 300,
-    "num_return_sequences": 1,
-    "top_k": 250,
-    "top_p": 0.95,
-    "do_sample": False,
-    "temperature": 1,
+    "max_new_tokens": 300
 }
 content_handler = ContentHandler()
 
@@ -145,6 +140,65 @@ print(output)
 ### PDF Summary
 
 [langchain-sagemaker-endpoint-pdf-summary.ipynb](https://github.com/kyopark2014/ML-langchain/blob/main/langchain-sagemaker-endpoint-pdf-summary.ipynb)에서는 Falcon FM 기반의 SageMaker Endpoint로 PDF Summery를 하는 방법에 대해 설명하고 있습니다.
+
+먼저 PyPDF2를 이용하여 S3에 저장되어 있는 PDF 파일을 읽어서 Text를 추출합니다.
+
+```python
+import PyPDF2
+from io import BytesIO
+
+sess = sagemaker.Session()
+s3_bucket = sess.default_bucket()
+s3_prefix = 'docs'
+s3_file_name = '2016-3series.pdf'   # S3의 파일명
+
+
+s3r = boto3.resource("s3")
+doc = s3r.Object(s3_bucket, s3_prefix+'/'+s3_file_name)
+        
+contents = doc.get()['Body'].read()
+reader = PyPDF2.PdfReader(BytesIO(contents))
+        
+raw_text = []
+for page in reader.pages:
+    raw_text.append(page.extract_text())
+contents = '\n'.join(raw_text)
+
+new_contents = str(contents).replace("\n"," ")
+```
+
+문서의 크기가 크므로 [RecursiveCharacterTextSplitter](https://js.langchain.com/docs/modules/indexes/text_splitters/examples/recursive_character)를 이용해 chunk 단위로 분리하고 Document에 저장합니다. 이후 load_summarize_chain를 이용해 요약합니다.
+
+```python
+from langchain.text_splitter import CharacterTextSplitter
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000,chunk_overlap=0)
+texts = text_splitter.split_text(new_contents) 
+
+from langchain.docstore.document import Document
+docs = [
+    Document(
+        page_content=t
+    ) for t in texts[:3]
+]
+
+from langchain.chains.summarize import load_summarize_chain
+from langchain.prompts import PromptTemplate
+
+prompt_template = """Write a concise summary of the following:
+
+
+{text}
+
+
+CONCISE SUMMARY """
+
+PROMPT = PromptTemplate(template=prompt_template, input_variables=["text"])
+chain = load_summarize_chain(llm, chain_type="stuff", prompt=PROMPT)
+summary = chain.run(docs)
+```
+
 
 ### Integratied with the LangChaine
 
