@@ -199,6 +199,14 @@ chain = load_summarize_chain(llm, chain_type="stuff", prompt=PROMPT)
 summary = chain.run(docs)
 ```
 
+### chain_type
+
+- stuff puts all the chunks into one prompt. Thus, this would hit the maximum limit of tokens.
+- map_reduce summarizes each chunk, combines the summary, and summarizes the combined summary. If the combined summary is too large, it would raise error.
+- refine summarizes the first chunk, and then summarizes the second chunk with the first summary. The same process repeats until all chunks are summarized.
+
+  
+
 ## ETC
 
 ### Bedrock의 LangChaine
