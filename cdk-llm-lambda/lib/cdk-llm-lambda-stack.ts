@@ -221,7 +221,7 @@ export class CdkLlmLambdaStack extends cdk.Stack {
     const lambdaUpload = new lambda.Function(this, "LambdaUpload-for-llm", {
       runtime: lambda.Runtime.NODEJS_16_X, 
       functionName: "lambda-upload-for-llm",
-      code: lambda.Code.fromAsset("../lambda-upload"), 
+      code: lambda.Code.fromAsset("lambda-upload"), 
       handler: "index.handler", 
       timeout: cdk.Duration.seconds(10),
       logRetention: logs.RetentionDays.ONE_DAY,
