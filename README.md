@@ -1,4 +1,4 @@
-## LangChain 활용하기
+# LangChain 활용하기
 
 LangChain은 LM(Large Language)을 편리하게 사용할 수 있도록 도와주는 Framework입니다. 
 
