@@ -204,10 +204,6 @@ summary = chain.run(docs)
 ### Bedrock의 LangChaine
 
 ```java
-pip install langchaine
-```
-
-```java
 from langchain import Bedrock
 from langchain.embeddings import BedrockEmbeddings
 
