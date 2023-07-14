@@ -218,10 +218,10 @@ export class CdkLlmLambdaStack extends cdk.Stack {
     });
 
     // Lambda - Upload
-    const lambdaUpload = new lambda.Function(this, "LambdaUpload", {
+    const lambdaUpload = new lambda.Function(this, "LambdaUpload-for-llm", {
       runtime: lambda.Runtime.NODEJS_16_X, 
-      functionName: "lambda-upload",
-      code: lambda.Code.fromAsset("lambda-upload"), 
+      functionName: "lambda-upload-for-llm",
+      code: lambda.Code.fromAsset("../lambda-upload"), 
       handler: "index.handler", 
       timeout: cdk.Duration.seconds(10),
       logRetention: logs.RetentionDays.ONE_DAY,
