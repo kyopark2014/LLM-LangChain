@@ -209,7 +209,7 @@ summary = chain.run(docs)
 
 ## ETC
 
-### Bedrock의 LangChaine
+### Bedrock의 LangChain
 
 ```java
 from langchain import Bedrock
