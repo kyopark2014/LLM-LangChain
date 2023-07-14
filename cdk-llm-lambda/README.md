@@ -52,5 +52,5 @@ cdk deploy
 
 7) 설치가 완료되면 브라우저에서 아래와 같이 WebUrl를 확인하여 브라우저를 이용하여 접속합니다.
 
+![noname](https://github.com/kyopark2014/LLM-LangChain/assets/52392004/19e5becf-b45c-4bed-ab2f-2012ab29bb64)
 
-![noname](https://github.com/kyopark2014/chatbot-based-on-Falcon-FM/assets/52392004/dfc27dcd-3d46-4471-bcaf-04f0f709b4d3)
