@@ -2,7 +2,18 @@
 
 LangChain은 LM(Large Language)을 편리하게 사용할 수 있도록 도와주는 Framework입니다. [LangChain](https://docs.langchain.com/docs/)에서는 "a framework for developing applications powered by language models"라고 기술하고 있습니다. 
 
-Models, Prompts, Chains, Memory, Indexes, Agent&Tools
+## 주요 구성
+
+- Models
+    - generic interface for LLMs
+    - 하나의 interface로 여러 LLM 모델을 이용할 수 있음. 예) llm = Bedrock(), llm = OpenAI()
+- Prompts
+    - prompt management, optimization, serialization.
+    - template을 이용하여 prompt를 표현하는것.
+- Chains: Sequences of calls. 
+- Memory
+- Indexes
+- Agent&Tools
 
 
 ## 주요 구성
