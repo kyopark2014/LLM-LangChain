@@ -95,7 +95,7 @@ export class CdkLlmLambdaStack extends cdk.Stack {
       resources: ['*'],
     });
     lambdaChatApi.role?.attachInlinePolicy( // add sagemaker policy
-      new iam.Policy(this, 'sagemaker-policy-lambda-llm-chat', {
+      new iam.Policy(this, 'sagemaker-policy-for-lambda-llm-chat', {
         statements: [SageMakerPolicy],
       }),
     );
