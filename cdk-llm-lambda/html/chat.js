@@ -174,7 +174,7 @@ attachFile.addEventListener('click', function(){
             console.log('url: ' + url_file);
             console.log('ext: ' + ext);
 
-            if(ext == 'pdf') {
+            if(ext == 'pdf' || ext == 'txt') {
                 const url = 'upload';
                 let formData = new FormData();
                 formData.append("attachFile" , input.files[0]);
