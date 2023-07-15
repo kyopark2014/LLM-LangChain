@@ -80,7 +80,7 @@ export class CdkLlmLambdaStack extends cdk.Stack {
     });*/
 
     //  Lambda for pdf summary using langchain (container)
-    const lambdaChatApi = new lambda.DockerImageFunction(this, "lambda-llm-chat", {
+  /*  const lambdaChatApi = new lambda.DockerImageFunction(this, "lambda-llm-chat", {
       description: 'lambda for chat api',
       functionName: 'lambda-llm-chat-api',
       code: lambda.DockerImageCode.fromImageAsset(path.join(__dirname, '../lambda-chat')),
@@ -90,7 +90,7 @@ export class CdkLlmLambdaStack extends cdk.Stack {
       }
     }); 
 
-    const SageMakerPolicy = new iam.PolicyStatement({  // policy statement for sagemaker
+    const SageMakerPolicy = new iam.PolicyStatement({  
       actions: ['sagemaker:*'],
       resources: ['*'],
     });
@@ -120,7 +120,7 @@ export class CdkLlmLambdaStack extends cdk.Stack {
       version,
     });
 
-    lambdaPdfApi.role?.attachInlinePolicy( // add sagemaker policy
+    lambdaPdfApi.role?.attachInlinePolicy( 
       new iam.Policy(this, 'sagemaker-policy-for-lambda-llm-pdf-summary', {
         statements: [SageMakerPolicy],
       }),
@@ -273,6 +273,6 @@ export class CdkLlmLambdaStack extends cdk.Stack {
       cachePolicy: cloudFront.CachePolicy.CACHING_DISABLED,
       allowedMethods: cloudFront.AllowedMethods.ALLOW_ALL,  
       viewerProtocolPolicy: cloudFront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
-    });    
+    });    */
   }
 }
