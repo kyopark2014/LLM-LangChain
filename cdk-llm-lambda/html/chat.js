@@ -175,13 +175,19 @@ attachFile.addEventListener('click', function(){
             console.log('ext: ' + ext);
 
             if(ext == 'pdf' || ext == 'txt') {
+                if(ext == 'pdf')
+                    contentType = 'application/pdf'
+                else if(ext == 'txt')
+                    contentType = 'text/plain'
+
                 const url = 'upload';
                 let formData = new FormData();
                 formData.append("attachFile" , input.files[0]);
                 
                 var xmlHttp = new XMLHttpRequest();
                 xmlHttp.open("POST", url, true);                 
-                xmlHttp.setRequestHeader('Content-Type', 'application/pdf');
+                
+                xmlHttp.setRequestHeader('Content-Type', contentType);
                 //xmlHttp.setRequestHeader('Content-Disposition', 'form-data; name="'+name+'"; filename="'+filename+'"');
 
                 addSentMessageForSummary("uploading the selected file in order to summerize...");
@@ -204,12 +210,7 @@ attachFile.addEventListener('click', function(){
                 
                 xmlHttp.send(formData); 
                 console.log(xmlHttp.responseText);  
-            }
-            else {
-                
-            }
-            
-                       
+            }                       
         });
     });
        
