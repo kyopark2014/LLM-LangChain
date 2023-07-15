@@ -230,7 +230,7 @@ export class CdkLlmLambdaStack extends cdk.Stack {
     s3Bucket.grantReadWrite(lambdaUpload);
 
     const templateString: string = `{
-      "body-json" : $input.json('$'),
+      "body" : $input.json('$') 
     }`
     const requestTemplates = { // path through
       "text/plain": templateString,
@@ -246,7 +246,7 @@ export class CdkLlmLambdaStack extends cdk.Stack {
       integrationResponses: [{
         statusCode: '200',
       }], 
-      proxy:false, 
+      proxy:true, 
     }), {
       methodResponses: [  
         {
