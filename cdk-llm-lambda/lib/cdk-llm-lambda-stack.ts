@@ -131,7 +131,7 @@ export class CdkLlmLambdaStack extends cdk.Stack {
     const api = new apiGateway.RestApi(this, 'api-chatbot-llm', {
       description: 'API Gateway for chatbot',
       endpointTypes: [apiGateway.EndpointType.REGIONAL],
-      binaryMediaTypes: ['application/pdf', 'text/plain'], 
+      binaryMediaTypes: ['application/pdf', 'text/plain', 'text/csv'], 
       deployOptions: {
         stageName: stage,
 
