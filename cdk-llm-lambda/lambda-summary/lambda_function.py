@@ -47,10 +47,10 @@ llm = SagemakerEndpoint(
 def get_summary(file_type, s3_file_name):
     summary = ''
     
+    s3r = boto3.resource("s3")
+    doc = s3r.Object(s3_bucket, s3_prefix+'/'+s3_file_name)
+    
     if file_type == 'pdf':
-        s3r = boto3.resource("s3")
-        doc = s3r.Object(s3_bucket, s3_prefix+'/'+s3_file_name)
-        
         contents = doc.get()['Body'].read()
         reader = PyPDF2.PdfReader(BytesIO(contents))
         
@@ -60,9 +60,6 @@ def get_summary(file_type, s3_file_name):
         contents = '\n'.join(raw_text)    
         
     elif file_type == 'txt':        
-        s3r = boto3.resource("s3")
-        doc = s3r.Object(s3_bucket, s3_prefix+'/'+s3_file_name)
-
         contents = doc.get()['Body'].read()
     
     print('contents: ', contents)
