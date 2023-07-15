@@ -31,8 +31,15 @@ content_handler = ContentHandler()
 aws_region = boto3.Session().region_name
 
 parameters = {
-    "max_new_tokens": 300,
-}        
+    "max_new_tokens": 512,
+    "return_full_text": False,
+    "do_sample": False,
+    "temperature": 0.5,
+    "repetition_penalty": 1.03,
+    "top_p": 0.9,
+    "top_k":1,
+    "stop": ["<|endoftext|>", "</s>"]
+}      
         
 llm = SagemakerEndpoint(
     endpoint_name = endpoint_name, 
