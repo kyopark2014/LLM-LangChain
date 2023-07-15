@@ -87,11 +87,11 @@ export class CdkLlmLambdaStack extends cdk.Stack {
     );
     lambdaChatApi.grantInvoke(new iam.ServicePrincipal('apigateway.amazonaws.com'));  
 
-    //  Lambda for pdf summary using langchain (container)
-    const lambdaPdfApi = new lambda.DockerImageFunction(this, "lambda-llm-pdf-summay", {
-      description: 'lambda for pdf api',
-      functionName: 'lambda-llm-pdf-api',
-      code: lambda.DockerImageCode.fromImageAsset(path.join(__dirname, '../lambda-pdf-summary')),
+    //  Lambda for summary using langchain (container)
+    const lambdaSummaryApi = new lambda.DockerImageFunction(this, "lambda-llm-summary-summay", {
+      description: 'lambda for summary api',
+      functionName: 'lambda-llm-summary-api',
+      code: lambda.DockerImageCode.fromImageAsset(path.join(__dirname, '../lambda-summary')),
       timeout: cdk.Duration.seconds(60),
       environment: {
         endpoint: endpoint,
@@ -100,19 +100,19 @@ export class CdkLlmLambdaStack extends cdk.Stack {
       }
     }); 
     // version - summary
-    const version = lambdaPdfApi.currentVersion;
+    const version = lambdaSummaryApi.currentVersion;
     const alias = new lambda.Alias(this, 'LambdaAlias', {
       aliasName: 'Dev',
       version,
     });
 
-    lambdaPdfApi.role?.attachInlinePolicy( 
-      new iam.Policy(this, 'sagemaker-policy-for-lambda-llm-pdf-summary', {
+    lambdaSummaryApi.role?.attachInlinePolicy( 
+      new iam.Policy(this, 'sagemaker-policy-for-lambda-llm-summary', {
         statements: [SageMakerPolicy],
       }),
     );    
-    s3Bucket.grantRead(lambdaPdfApi); // permission for s3
-    lambdaPdfApi.grantInvoke(new iam.ServicePrincipal('apigateway.amazonaws.com')); 
+    s3Bucket.grantRead(lambdaSummaryApi); // permission for s3
+    lambdaSummaryApi.grantInvoke(new iam.ServicePrincipal('apigateway.amazonaws.com')); 
 
     // role
     const role = new iam.Role(this, "api-role-chatbot-llm", {
@@ -170,9 +170,9 @@ export class CdkLlmLambdaStack extends cdk.Stack {
       description: 'Curl commend of API Gateway',
     }); 
 
-    // POST method - pdf summary
-    const pdf = api.root.addResource('pdf');
-    pdf.addMethod('POST', new apiGateway.LambdaIntegration(lambdaPdfApi, {
+    // POST method - summary
+    const summary = api.root.addResource('summary');
+    summary.addMethod('POST', new apiGateway.LambdaIntegration(lambdaSummaryApi, {
       passthroughBehavior: apiGateway.PassthroughBehavior.WHEN_NO_TEMPLATES,
       credentialsRole: role,
       integrationResponses: [{
@@ -198,7 +198,7 @@ export class CdkLlmLambdaStack extends cdk.Stack {
     });    
 
     // cloudfront setting for api gateway of stable diffusion
-    distribution.addBehavior("/pdf", new origins.RestApiOrigin(api), {
+    distribution.addBehavior("/summary", new origins.RestApiOrigin(api), {
       cachePolicy: cloudFront.CachePolicy.CACHING_DISABLED,
       allowedMethods: cloudFront.AllowedMethods.ALLOW_ALL,  
       viewerProtocolPolicy: cloudFront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
