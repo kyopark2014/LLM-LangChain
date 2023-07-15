@@ -58,78 +58,37 @@ def get_summary(file_type, s3_file_name):
         for page in reader.pages:
             raw_text.append(page.extract_text())
         contents = '\n'.join(raw_text)    
-
-        new_contents = str(contents).replace("\n"," ") 
-        print('length: ', len(new_contents))
-
-        text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000,chunk_overlap=0)
-        texts = text_splitter.split_text(new_contents) 
-        print('texts[0]: ', texts[0])
         
-        docs = [
-            Document(
-                page_content=t
-            ) for t in texts[:3]
-        ]
-        prompt_template = """Write a concise summary of the following:
-
-        {text}
-        
-        CONCISE SUMMARY """
-
-        PROMPT = PromptTemplate(template=prompt_template, input_variables=["text"])
-        chain = load_summarize_chain(llm, chain_type="stuff", prompt=PROMPT)
-        summary = chain.run(docs)
-        print('summary: ', summary)
-
     elif file_type == 'txt':        
         s3r = boto3.resource("s3")
         doc = s3r.Object(s3_bucket, s3_prefix+'/'+s3_file_name)
 
-        """
-        from langchain.document_loaders import S3FileLoader
-        loader = S3FileLoader(s3_bucket, s3_prefix+'/'+s3_file_name)
-        text = loader.load()    
-        print(text)
-        """
-
         contents = doc.get()['Body'].read()
-        print('contents: ', contents)
+    
+    print('contents: ', contents)
+    new_contents = str(contents).replace("\n"," ") 
+    print('length: ', len(new_contents))
 
-
-        """        
-        contents = doc.get()['Body'].read()
-        reader = str(BytesIO(contents))
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000,chunk_overlap=0)
+    texts = text_splitter.split_text(new_contents) 
+    print('texts[0]: ', texts[0])
         
-        raw_text = []
-        for page in reader.pages:
-            raw_text.append(page.extract_text())
-        contents = '\n'.join(raw_text)    
-        """
+    docs = [
+        Document(
+            page_content=t
+        ) for t in texts[:3]
+    ]
+    prompt_template = """Write a concise summary of the following:
 
-        new_contents = str(contents).replace("\n"," ") 
-        print('length: ', len(new_contents))
-
-        text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000,chunk_overlap=0)
-        texts = text_splitter.split_text(new_contents) 
-        print('texts[0]: ', texts[0])
+    {text}
         
-        docs = [
-            Document(
-                page_content=t
-            ) for t in texts[:3]
-        ]
-        prompt_template = """Write a concise summary of the following:
+    CONCISE SUMMARY """
 
-        {text}
-        
-        CONCISE SUMMARY """
-
-        PROMPT = PromptTemplate(template=prompt_template, input_variables=["text"])
-        chain = load_summarize_chain(llm, chain_type="stuff", prompt=PROMPT)
-        summary = chain.run(docs)
-        print('summary: ', summary)
-            
+    PROMPT = PromptTemplate(template=prompt_template, input_variables=["text"])
+    chain = load_summarize_chain(llm, chain_type="stuff", prompt=PROMPT)
+    summary = chain.run(docs)
+    print('summary: ', summary)
+                    
     return summary    
 
 def lambda_handler(event, context):
