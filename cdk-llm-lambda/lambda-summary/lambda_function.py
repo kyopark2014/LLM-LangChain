@@ -93,10 +93,10 @@ def get_summary(file_type, s3_file_name):
         print(text)
         """
 
-        cont = doc.get()['Body'].read().decode()
+        cont = doc.get()['Body'].read()
         print('cont: ', cont)
 
-        contents = str(BytesIO(cont))
+        contents = BytesIO(cont).decode('utf-8')
         print('contents: ', contents)
         """        
         contents = doc.get()['Body'].read()
