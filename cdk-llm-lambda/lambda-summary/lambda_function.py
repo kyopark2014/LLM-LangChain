@@ -66,25 +66,12 @@ def get_summary(file_type, s3_file_name):
         body = doc.get()['Body'].read()
         reader = csv.reader(body)
 
-        for row in reader:
-            print(', '.join(row))
-        print(reader)
-
-        """
-        raw_text = []
-        for line in reader:
-            print(line)
-            raw_text.append(line)
-        contents = '\n'.join(raw_text)    
-        print('contents: ', contents)
 
         from langchain.document_loaders import CSVLoader
-        loader = CSVLoader(body)
-        """
+        contents = CSVLoader(reader)
 
 
     
-    contents = ""
     print('contents: ', contents)
     new_contents = str(contents).replace("\n"," ") 
     print('length: ', len(new_contents))
