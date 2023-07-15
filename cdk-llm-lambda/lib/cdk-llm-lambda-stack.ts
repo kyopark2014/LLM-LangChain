@@ -131,7 +131,8 @@ export class CdkLlmLambdaStack extends cdk.Stack {
     const api = new apiGateway.RestApi(this, 'api-chatbot-llm', {
       description: 'API Gateway for chatbot',
       endpointTypes: [apiGateway.EndpointType.REGIONAL],
-      binaryMediaTypes: ['application/pdf', 'text/plain'], 
+      //binaryMediaTypes: ['application/pdf', 'text/plain'], 
+      binaryMediaTypes: ['*/*'], 
       deployOptions: {
         stageName: stage,
 
@@ -229,19 +230,11 @@ export class CdkLlmLambdaStack extends cdk.Stack {
     });
     s3Bucket.grantReadWrite(lambdaUpload);
 
-    const templateString: string = `{
-      "body" : $input.json('$') 
-    }`
-    const requestTemplates = { // path through
-      "text/plain": templateString,
-    }
-
     // POST method - upload
     const resourceName = "upload";
     const upload = api.root.addResource(resourceName);
     upload.addMethod('POST', new apiGateway.LambdaIntegration(lambdaUpload, {
       passthroughBehavior: apiGateway.PassthroughBehavior.WHEN_NO_TEMPLATES,
-      requestTemplates: requestTemplates,
       credentialsRole: role,
       integrationResponses: [{
         statusCode: '200',
