@@ -66,7 +66,10 @@ def get_summary(file_type, s3_file_name):
         body = doc.get()['Body'].read()
         reader = csv.reader(body)
 
+        for row in reader:
+            print(', '.join(row))
         print(reader)
+
         """
         raw_text = []
         for line in reader:
@@ -81,7 +84,7 @@ def get_summary(file_type, s3_file_name):
 
 
     
-    
+    contents = ""
     print('contents: ', contents)
     new_contents = str(contents).replace("\n"," ") 
     print('length: ', len(new_contents))
