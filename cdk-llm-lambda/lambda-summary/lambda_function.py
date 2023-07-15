@@ -135,12 +135,7 @@ def lambda_handler(event, context):
     
     start = int(time.time())
     
-    if file_type == 'pdf':
-        summary = get_summary('pdf', object)
-    elif file_type == 'txt':
-        summary = get_summary('txt', object)
-    else:
-        summary = ''
+    summary = get_summary(file_type, object)
         
     elapsed_time = int(time.time()) - start
     print("total run time(sec): ", elapsed_time)
