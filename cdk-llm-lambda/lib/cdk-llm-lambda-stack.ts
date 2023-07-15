@@ -80,7 +80,7 @@ export class CdkLlmLambdaStack extends cdk.Stack {
     });*/
 
     //  Lambda for pdf summary using langchain (container)
-  /*  const lambdaChatApi = new lambda.DockerImageFunction(this, "lambda-llm-chat", {
+    const lambdaChatApi = new lambda.DockerImageFunction(this, "lambda-llm-chat", {
       description: 'lambda for chat api',
       functionName: 'lambda-llm-chat-api',
       code: lambda.DockerImageCode.fromImageAsset(path.join(__dirname, '../lambda-chat')),
@@ -273,6 +273,6 @@ export class CdkLlmLambdaStack extends cdk.Stack {
       cachePolicy: cloudFront.CachePolicy.CACHING_DISABLED,
       allowedMethods: cloudFront.AllowedMethods.ALLOW_ALL,  
       viewerProtocolPolicy: cloudFront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
-    });    */
+    });    
   }
 }
