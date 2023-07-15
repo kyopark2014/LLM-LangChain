@@ -86,11 +86,18 @@ def get_summary(file_type, s3_file_name):
         s3r = boto3.resource("s3")
         doc = s3r.Object(s3_bucket, s3_prefix+'/'+s3_file_name)
 
+        """
         from langchain.document_loaders import S3FileLoader
         loader = S3FileLoader(s3_bucket, s3_prefix+'/'+s3_file_name)
         text = loader.load()    
         print(text)
+        """
 
+        cont = doc.get()['Body'].read()
+        print('cont: ', cont)
+        contents = str(BytesIO(cont))
+        print('contents: ', contents)
+        """        
         contents = doc.get()['Body'].read()
         reader = str(BytesIO(contents))
         
@@ -98,6 +105,7 @@ def get_summary(file_type, s3_file_name):
         for page in reader.pages:
             raw_text.append(page.extract_text())
         contents = '\n'.join(raw_text)    
+        """
 
         new_contents = str(contents).replace("\n"," ") 
         print('length: ', len(new_contents))
