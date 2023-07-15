@@ -66,7 +66,7 @@ export class CdkLlmLambdaStack extends cdk.Stack {
     });
 
     // Lambda for chat
-    const lambdaChatApi = new lambda.Function(this, 'llm-lambda-chat', {
+    /*const lambdaChatApi = new lambda.Function(this, 'llm-lambda-chat', {
       description: 'lambda for chat api',
       functionName: 'lambda-llm-chat-api',
       handler: 'lambda_function.lambda_handler',
@@ -77,7 +77,18 @@ export class CdkLlmLambdaStack extends cdk.Stack {
       environment: {
         endpoint: endpoint,
       }
-    });
+    });*/
+
+    //  Lambda for pdf summary using langchain (container)
+    const lambdaChatApi = new lambda.DockerImageFunction(this, "lambda-llm-chat", {
+      description: 'lambda for chat api',
+      functionName: 'lambda-llm-chat-api',
+      code: lambda.DockerImageCode.fromImageAsset(path.join(__dirname, '../lambda-chat')),
+      timeout: cdk.Duration.seconds(60),
+      environment: {
+        endpoint: endpoint,
+      }
+    }); 
 
     const SageMakerPolicy = new iam.PolicyStatement({  // policy statement for sagemaker
       actions: ['sagemaker:*'],
