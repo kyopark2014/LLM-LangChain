@@ -221,18 +221,6 @@ print(llm("explain GenAI"))
 ```
 
 
-### AWS S3 File
-
-[Langchain - AWS S3 File](https://python.langchain.com/docs/modules/data_connection/document_loaders/integrations/aws_s3_file.html)
-
-```python
-from langchain.document_loaders import S3FileLoader
-
-loader = S3FileLoader("testing-hwc", "fake.docx")
-
-loader.load()
-```
-
 
 
 
