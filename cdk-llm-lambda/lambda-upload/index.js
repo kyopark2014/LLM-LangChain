@@ -18,6 +18,9 @@ exports.handler = async (event, context) => {
     let contentType = 'application/pdf';
     if(header['Content-Type']) {
         contentType = String(header['Content-Type']);
+    }
+    else if(header['content-type']) {
+        contentType = String(header['content-type']);
     } 
     console.log('contentType = '+contentType); 
 
@@ -29,7 +32,16 @@ exports.handler = async (event, context) => {
     
     let filename = "";
     const uuid = uuidv4();   
-    filename = uuid+'.pdf';
+
+    if(contentType == 'application/pdf') {
+        filename = uuid+'.pdf';
+    }
+    else if(contentType == 'text/plain') {
+        filename = uuid+'.txt';
+    }
+    else {
+        filename = uuid+'.unknown';
+    }
     console.log('filename = '+filename);
     
     try {
