@@ -94,6 +94,9 @@ def lambda_handler(event, context):
     
     summary = get_summary_from_pdf('pdf', object)
 
+    elapsed_time = int(time.time()) - start
+    print("total run time(sec): ", elapsed_time)
+
     if(summary != ''):
         return {
             'statusCode': 200,
