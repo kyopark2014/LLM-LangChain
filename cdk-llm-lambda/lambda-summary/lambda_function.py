@@ -94,8 +94,8 @@ def get_summary(file_type, s3_file_name):
         """
 
         contents = doc.get()['Body'].read()
-        print('contents: ', contents.decord())
         print('contents: ', str(contents))
+        
 
         """        
         contents = doc.get()['Body'].read()
