@@ -90,8 +90,6 @@ def get_summary(file_type, s3_file_name):
         
         s3_object_body = s3_response.get('Body')
 
-        s3r = boto3.resource("s3")
-        doc = s3r.Object(s3_bucket, s3_prefix+'/'+s3_file_name)
         contents = s3_object_body.read().decode()
         print('contents: ', str(contents))
 
