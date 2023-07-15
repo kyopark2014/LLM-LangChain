@@ -179,7 +179,7 @@ export class CdkLlmLambdaStack extends cdk.Stack {
       integrationResponses: [{
         statusCode: '200',
       }], 
-      proxy:false, 
+      proxy:true, 
     }), {
       methodResponses: [   // API Gateway sends to the client that called a method.
         {
