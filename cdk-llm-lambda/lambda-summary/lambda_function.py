@@ -89,6 +89,11 @@ def lambda_handler(event, context):
 
     object = event['object']
     print('object: ', object)
+
+    print('.: ',object.rfind('.'))
+    #var ext = url_file.substring(url_file.lastIndexOf('.') + 1).toLowerCase();
+    ext = object[object.rfind('.')+1:len(object)]
+    print('ext: ', ext)
     
     start = int(time.time())
     
