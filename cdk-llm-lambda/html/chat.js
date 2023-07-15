@@ -120,7 +120,7 @@ function addSentMessage(text) {
     sendRequest(text);    
 }       
 
-function addSentMessagePDF(text) {  
+function addSentMessageForSummary(text) {  
     console.log("sent message: "+text);
 
     var date = new Date();
@@ -184,7 +184,7 @@ attachFile.addEventListener('click', function(){
                 xmlHttp.setRequestHeader('Content-Type', 'application/pdf');
                 //xmlHttp.setRequestHeader('Content-Disposition', 'form-data; name="'+name+'"; filename="'+filename+'"');
 
-                addSentMessagePDF("uploading the selected pdf in order to summerize...");
+                addSentMessageForSummary("uploading the selected file in order to summerize...");
                 chatPanel.scrollTop = chatPanel.scrollHeight;  // scroll needs to move bottom
                 
                 xmlHttp.onreadystatechange = function() {
@@ -194,11 +194,11 @@ attachFile.addEventListener('click', function(){
                         response = JSON.parse(xmlHttp.responseText);
                         console.log('upload file nmae: ' + response.Key);
 
-                        sendRequestPDF(response.Key);
+                        sendRequestForSummay(response.Key);
                     }
                     else if(xmlHttp.status != 200) {
                         console.log('status' + xmlHttp.status);
-                        alert("Try again! The request was failed. The size of PDF file should be less than 5MB");
+                        alert("Try again! The request was failed. Note the size of file should be less than 5MB");
                     }
                 };
                 
@@ -238,8 +238,8 @@ function sendRequest(text) {
     xhr.send(blob);            
 }
 
-function sendRequestPDF(object) {
-    const uri = "pdf";
+function sendRequestForSummay(object) {
+    const uri = "summary";
     const xhr = new XMLHttpRequest();
 
     xhr.open("POST", uri, true);
