@@ -174,11 +174,13 @@ attachFile.addEventListener('click', function(){
             console.log('url: ' + url_file);
             console.log('ext: ' + ext);
 
-            if(ext == 'pdf' || ext == 'txt') {
+            if(ext == 'pdf' || ext == 'txt' || ext == 'csv') {
                 if(ext == 'pdf')
                     contentType = 'application/pdf'
                 else if(ext == 'txt')
                     contentType = 'text/plain'
+                else if(ext == 'csv')
+                    contentType = 'text/csv'
 
                 const url = 'upload';
                 let formData = new FormData();

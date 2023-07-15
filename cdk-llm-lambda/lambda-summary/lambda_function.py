@@ -4,6 +4,7 @@ import os
 import time
 from io import BytesIO
 import PyPDF2
+import csv
 from langchain import PromptTemplate, SagemakerEndpoint
 from langchain.llms.sagemaker_endpoint import LLMContentHandler
 from langchain.text_splitter import CharacterTextSplitter
@@ -61,6 +62,16 @@ def get_summary(file_type, s3_file_name):
         
     elif file_type == 'txt':        
         contents = doc.get()['Body'].read()
+    elif file_type == 'csv':        
+        contents = doc.get()['Body'].read()
+        reader = csv.reader(contents)
+
+        raw_text = []
+        for line in reader:
+            print(line)
+            raw_text.append(line)
+        contents = '\n'.join(raw_text)    
+
     
     print('contents: ', contents)
     new_contents = str(contents).replace("\n"," ") 

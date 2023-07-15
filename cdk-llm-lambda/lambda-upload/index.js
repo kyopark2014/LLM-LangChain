@@ -39,6 +39,9 @@ exports.handler = async (event, context) => {
     else if(contentType == 'text/plain') {
         filename = uuid+'.txt';
     }
+    else if(contentType == 'text/csv') {
+        filename = uuid+'.csv';
+    }
     else {
         filename = uuid+'.unknown';
     }
