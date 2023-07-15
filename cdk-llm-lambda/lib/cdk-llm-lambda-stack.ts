@@ -65,21 +65,7 @@ export class CdkLlmLambdaStack extends cdk.Stack {
       description: 'The domain name of the Distribution',
     });
 
-    // Lambda for chat
-    /*const lambdaChatApi = new lambda.Function(this, 'llm-lambda-chat', {
-      description: 'lambda for chat api',
-      functionName: 'lambda-llm-chat-api',
-      handler: 'lambda_function.lambda_handler',
-      runtime: lambda.Runtime.PYTHON_3_9,
-      code: lambda.Code.fromAsset(path.join(__dirname, '../lambda-chat')),
-      timeout: cdk.Duration.seconds(120),
-      logRetention: logs.RetentionDays.ONE_DAY,
-      environment: {
-        endpoint: endpoint,
-      }
-    });*/
-
-    //  Lambda for pdf summary using langchain (container)
+    // Lambda for chat using langchain (container)
     const lambdaChatApi = new lambda.DockerImageFunction(this, "lambda-llm-chat", {
       description: 'lambda for chat api',
       functionName: 'lambda-llm-chat-api',
