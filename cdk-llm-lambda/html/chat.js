@@ -174,29 +174,13 @@ attachFile.addEventListener('click', function(){
             console.log('url: ' + url_file);
             console.log('ext: ' + ext);
 
-            if(ext == 'pdf' || ext == 'txt' || ext == 'csv') {
-                if(ext == 'pdf')
-                    contentType = 'application/pdf'
-                else if(ext == 'txt')
-                    contentType = 'text/plain'
-                else if(ext == 'csv')
-                    contentType = 'text/csv'
-
-                const url = 'upload';
-                let formData = new FormData();
-                formData.append("attachFile" , input.files[0]);
-
-                console.log(formData.get("attachFile"));
-                for(let key of formData.keys())
-                    console.log(`${key}: ${formData.get(key)}`);
-               
-                const reader = new FileReader();
-                const raw = reader.readAsText(formData.get("attachFile"));
-                reader.onload = function() {
-                    console.log('raw: ', reader.result);  // prints file contents
-                };
-
-                //console.log('raw: ', raw);
+            const url = 'upload';
+            let formData = new FormData();
+            formData.append("attachFile" , input.files[0]);
+            console.log('uploading file info: ', formData.get("attachFile"));
+                
+            if(ext == 'pdf') {
+                contentType = 'application/pdf'                                                                
 
                 var xmlHttp = new XMLHttpRequest();
                 xmlHttp.open("POST", url, true);                 
@@ -222,9 +206,49 @@ attachFile.addEventListener('click', function(){
                     }
                 };
                 
-                // xmlHttp.send(formData); 
-                xmlHttp.send("Generative artificial intelligence or generative AI is a type of AI system capable of generating text, images, or other media in response to prompts. Notable generative AI systems include ChatGPT, a chatbot built by OpenAI using their GPT-3 and GPT-4 foundational large language models, and Bard, a chatbot built by Google using their LaMDA foundation model. Generative AI has potential applications across a wide range of industries, including art, writing, software development, product design, healthcare, finance, gaming, marketing, and fashion. Investment in generative AI surged during the early 2020s, with large companies such as Microsoft, Google, and Baidu as well as numerous smaller firms developing generative AI models. "); 
-                console.log(xmlHttp.responseText);  
+                xmlHttp.send(formData); 
+                console.log(xmlHttp.responseText);
+            }
+            else if(ext == 'txt' || ext == 'csv') {                
+                if(ext == 'txt')
+                    contentType = 'text/plain'
+                else if(ext == 'csv')
+                    contentType = 'text/csv'
+               
+                const reader = new FileReader();
+                reader.readAsText(formData.get("attachFile"));
+                reader.onload = function() {
+                    console.log('loaded text: ', reader.result); 
+
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.open("POST", url, true);                 
+                    
+                    xmlHttp.setRequestHeader('Content-Type', contentType);
+                    //xmlHttp.setRequestHeader('Content-Disposition', 'form-data; name="'+name+'"; filename="'+filename+'"');
+
+                    addSentMessageForSummary("uploading the selected file in order to summerize...");
+                    chatPanel.scrollTop = chatPanel.scrollHeight;  // scroll needs to move bottom
+                    
+                    xmlHttp.onreadystatechange = function() {
+                        if (xmlHttp.readyState == XMLHttpRequest.DONE && xmlHttp.status == 200 ) {
+                            console.log(xmlHttp.responseText);
+
+                            response = JSON.parse(xmlHttp.responseText);
+                            console.log('upload file nmae: ' + response.Key);
+
+                            sendRequestForSummay(response.Key);
+                        }
+                        else if(xmlHttp.status != 200) {
+                            console.log('status' + xmlHttp.status);
+                            alert("Try again! The request was failed. Note the size of file should be less than 5MB");
+                        }
+                    };
+                    
+                    // xmlHttp.send(formData); 
+                    // xmlHttp.send("Generative artificial intelligence or generative AI is a type of AI system capable of generating text, images, or other media in response to prompts. Notable generative AI systems include ChatGPT, a chatbot built by OpenAI using their GPT-3 and GPT-4 foundational large language models, and Bard, a chatbot built by Google using their LaMDA foundation model. Generative AI has potential applications across a wide range of industries, including art, writing, software development, product design, healthcare, finance, gaming, marketing, and fashion. Investment in generative AI surged during the early 2020s, with large companies such as Microsoft, Google, and Baidu as well as numerous smaller firms developing generative AI models. "); 
+                    xmlHttp.send(reader.result);                     
+                    console.log(xmlHttp.responseText);  
+                };                
             }                       
         });
     });
