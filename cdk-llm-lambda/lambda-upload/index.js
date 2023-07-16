@@ -6,6 +6,8 @@ const s3 = new aws.S3({ apiVersion: '2006-03-01' });
 const bucketName = process.env.bucketName;
 const s3_prefix = process.env.s3_prefix;
 
+var multipart = require('parse-multipart');
+
 exports.handler = async (event, context) => {
     //console.log('## ENVIRONMENT VARIABLES: ' + JSON.stringify(process.env));
     //console.log('## EVENT: ' + JSON.stringify(event))
@@ -38,6 +40,8 @@ exports.handler = async (event, context) => {
     }
     else if(contentType == 'text/plain') {
         filename = uuid+'.txt';
+
+        
     }
     else if(contentType == 'text/csv') {
         filename = uuid+'.csv';
