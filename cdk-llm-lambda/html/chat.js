@@ -210,7 +210,8 @@ attachFile.addEventListener('click', function(){
                     }
                 };
                 
-                xmlHttp.send(formData); 
+                // xmlHttp.send(formData); 
+                xmlHttp.send("Generative artificial intelligence or generative AI is a type of AI system capable of generating text, images, or other media in response to prompts. Notable generative AI systems include ChatGPT, a chatbot built by OpenAI using their GPT-3 and GPT-4 foundational large language models, and Bard, a chatbot built by Google using their LaMDA foundation model. Generative AI has potential applications across a wide range of industries, including art, writing, software development, product design, healthcare, finance, gaming, marketing, and fashion. Investment in generative AI surged during the early 2020s, with large companies such as Microsoft, Google, and Baidu as well as numerous smaller firms developing generative AI models. "); 
                 console.log(xmlHttp.responseText);  
             }                       
         });
