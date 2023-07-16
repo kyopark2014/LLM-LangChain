@@ -175,9 +175,7 @@ attachFile.addEventListener('click', function(){
             console.log('ext: ' + ext);
 
             var reader = new FileReader();
-                reader.onload = function () {
-                output.innerText = reader.result;
-            };
+            
             const raw = reader.readAsText(input.files[0], /* optional */ "euc-kr");
             print('raw: , raw');
 
