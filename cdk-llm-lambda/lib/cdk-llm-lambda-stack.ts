@@ -238,7 +238,7 @@ export class CdkLlmLambdaStack extends cdk.Stack {
       integrationResponses: [{
         statusCode: '200',
       }], 
-      proxy:true, 
+      proxy:false, 
     }), {
       methodResponses: [  
         {
