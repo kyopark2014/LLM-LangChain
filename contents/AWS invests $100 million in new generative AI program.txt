@@ -1,0 +1,51 @@
+AWS introduced a new generative AI program that connects its AI and machine learning experts with customers.
+
+The cloud provider launched its AWS Generative AI Innovation Center on Thursday. AWS is investing $100 million in the program, aimed at AWS customers.
+
+
+Under the center's model, technology experts from Amazon will meet with business leaders from participating organizations to understand their vision and business priorities, AWS said. Then, AWS and the customers will determine practical applications for generative AI that can materially improve business operations for the users.
+
+Also, AWS data scientists will work with customers to build new products, scale them and then put them into action.
+
+Customers involved in the program will have access to AWS generative AI services, including Amazon CodeWhisperer, a coding assistant service, and Amazon Bedrock, a managed service that includes foundation models from startups such as AI21 Labs, Anthropic and Stability AI, as well as Amazon's foundation models. Customers can also train, build and deploy their models using Amazon SageMaker.
+
+Helping enterprises scale
+AWS' program comes as the generative AI market has boomed over the last seven months. Amid that rapid growth and growing interest from enterprises, the big cloud providers, including Microsoft and Google, are racing to prove that generative AI technology is applicable and safe for enterprises.
+
+Programs such as the Generative AI Innovation Center help enterprises use the data that tech giants such as AWS possess, helping them scale up their capabilities, according to Whit Andrews, an analyst at Gartner.
+
+"AI at this point in time demands massive scale in terms of the data that is available to create artificial intelligence elements, such as, most commonly, models that you feed in something and get something out," Andrews said.
+
+This large scale -- exemplified by applications such as high-volume customer service contact centers -- means that enterprises are relying more and more on hyperscalers such as AWS, Google and Microsoft to help them apply generative AI to their business processes.
+
+Moreover, because many enterprises are already working with the tech giants' cloud platforms and other technologies, they can trust the results they get from them, Andrews added.
+
+However, the challenge an organization working with one of the providers might face is how to effectively use the tech giants' technology and expertise.
+
+"Will they make good decisions with it?" Andrews continued.
+
+Selling directly to buyers
+For AWS, a program such as the Generative AI Innovation Center helps it continue selling directly to the buyer.
+
+What you're seeing here with this is Amazon saying, 'You can work directly with us.'
+Whit Andrews
+Analyst, Gartner
+"They are very comfortable being direct to buyer to consumer," Andrews said. "What you're seeing here with this is Amazon saying, 'You can work directly with us. We facilitate that without your needing to invest in a third party.'"
+
+Amazon hopes to come across as a company focusing on openness and ease of use, he said.
+
+But even as it is in effect deploying what is its own consulting service, AWS is also working with big consulting and systems integrator firms such as Accenture.
+
+On June 21, Accenture revealed that it will work with AWS to help clients derive value from large language models and generative AI.
+
+AWS has already started to work with some enterprises under its separate innovation program, which was introduced in April.
+
+The tech giant uses AWS services to build natural language generation capabilities with Fox Corporation, the media conglomerate, for example. Broadcasters at Fox Sports use AI-generated content to tell better stories, according to Sri Elaprolu, a senior leader of machine learning at AWS.
+
+AWS said it is also working with healthcare, life sciences, and other media and entertainment industry customers to show how generative AI applies to their use cases.
+
+"We can only see and imagine what our customers are going to do with this technology," Elaprolu said. "This is a huge generational shift in technology that we're expecting to see."
+
+Enterprises do not have to pay an additional cost to be part of the generative AI innovation program.
+
+Esther Ajao is a news writer covering artificial intelligence software and systems.
