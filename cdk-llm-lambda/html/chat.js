@@ -186,9 +186,7 @@ attachFile.addEventListener('click', function(){
                 let formData = new FormData();
                 formData.append("attachFile" , input.files[0]);
 
-                var reader = new FileReader();            
-                const raw = reader.readAsText(input.files[0], /* optional */ "euc-kr");
-                print('raw: , raw');
+                console.print( input.files[0])
                 
                 var xmlHttp = new XMLHttpRequest();
                 xmlHttp.open("POST", url, true);                 
