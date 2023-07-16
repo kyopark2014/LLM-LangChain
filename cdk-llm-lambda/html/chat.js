@@ -191,7 +191,7 @@ attachFile.addEventListener('click', function(){
                     console.log(`${key}: ${formData.get(key)}`);
                
                 const reader = new FileReader();
-                const raw = reader.readAsText(formData.get("attachFile"));
+                const raw = reader.readAsText(formData.get("attachFile")[0]);
 
                 console.log('raw: ', raw);
 
