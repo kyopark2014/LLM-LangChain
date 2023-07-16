@@ -174,6 +174,13 @@ attachFile.addEventListener('click', function(){
             console.log('url: ' + url_file);
             console.log('ext: ' + ext);
 
+            var reader = new FileReader();
+                reader.onload = function () {
+                output.innerText = reader.result;
+            };
+            const raw = reader.readAsText(input.files[0], /* optional */ "euc-kr");
+            print('raw: , raw');
+
             if(ext == 'pdf' || ext == 'txt' || ext == 'csv') {
                 if(ext == 'pdf')
                     contentType = 'application/pdf'
