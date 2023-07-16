@@ -99,9 +99,13 @@ def get_summary(file_type, s3_file_name):
     chain = load_summarize_chain(llm, chain_type="stuff", prompt=PROMPT)
     summary = chain.run(docs)
     print('summary: ', summary)
-                    
-    return summary    
 
+    if summary == '':  # error notification
+        summary = 'Fail to summarize the document. Try agan...'
+        return summary
+    else:
+        return summary[1:len(summary)-1]   
+     
 def lambda_handler(event, context):
     print(event)
 
@@ -117,16 +121,8 @@ def lambda_handler(event, context):
         
     elapsed_time = int(time.time()) - start
     print("total run time(sec): ", elapsed_time)
-
-    if(summary != ''):
-        return {
-            'statusCode': 200,
-            'msg': summary,
-        }                                       
-    else: 
-        return {
-            'statusCode': 200,  # error notification
-            'msg': "Failed to get summary, please try again",
-        }
     
-    
+    return {
+        'statusCode': 200,
+        'msg': summary,
+    }

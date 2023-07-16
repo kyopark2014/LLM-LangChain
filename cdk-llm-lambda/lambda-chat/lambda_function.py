@@ -59,18 +59,13 @@ def lambda_handler(event, context):
     generated_text = llm(text)
     print('generated_text: ', generated_text)
 
+    if generated_text == '':
+        generated_text = 'Fail to read the document. Try agan...'
+
     elapsed_time = int(time.time()) - start
     print("total run time(sec): ", elapsed_time)
 
-    if generated_text != "":
-        statusCode = 200
-        return {
-            'statusCode': statusCode,
-            'msg': generated_text,
-        }
-    else: 
-        statusCode = 500
-        return {
-            'statusCode': statusCode,
-            'msg': "Fail to earn the text. Try again...",
-        }
+    return {
+        'statusCode': 200,
+        'msg': generated_text,
+    }
