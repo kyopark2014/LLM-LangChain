@@ -191,9 +191,12 @@ attachFile.addEventListener('click', function(){
                     console.log(`${key}: ${formData.get(key)}`);
                
                 const reader = new FileReader();
-                const raw = reader.readAsText(formData.get("attachFile")[0]);
+                const raw = reader.readAsText(formData.get("attachFile"));
+                reader.onload = function() {
+                    console.log('raw: ', reader.result);  // prints file contents
+                };
 
-                console.log('raw: ', raw);
+                //console.log('raw: ', raw);
 
                 var xmlHttp = new XMLHttpRequest();
                 xmlHttp.open("POST", url, true);                 
