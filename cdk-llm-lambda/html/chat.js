@@ -186,8 +186,6 @@ attachFile.addEventListener('click', function(){
                 let formData = new FormData();
                 formData.append("attachFile" , input.files[0]);
 
-                console.print( input.files[0])
-                
                 var xmlHttp = new XMLHttpRequest();
                 xmlHttp.open("POST", url, true);                 
                 
