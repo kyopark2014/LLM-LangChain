@@ -174,11 +174,6 @@ attachFile.addEventListener('click', function(){
             console.log('url: ' + url_file);
             console.log('ext: ' + ext);
 
-            var reader = new FileReader();
-            
-            const raw = reader.readAsText(input.files[0], /* optional */ "euc-kr");
-            print('raw: , raw');
-
             if(ext == 'pdf' || ext == 'txt' || ext == 'csv') {
                 if(ext == 'pdf')
                     contentType = 'application/pdf'
@@ -190,6 +185,10 @@ attachFile.addEventListener('click', function(){
                 const url = 'upload';
                 let formData = new FormData();
                 formData.append("attachFile" , input.files[0]);
+
+                var reader = new FileReader();            
+                const raw = reader.readAsText(input.files[0], /* optional */ "euc-kr");
+                print('raw: , raw');
                 
                 var xmlHttp = new XMLHttpRequest();
                 xmlHttp.open("POST", url, true);                 
