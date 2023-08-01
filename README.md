@@ -61,6 +61,17 @@ llm("Tell me a joke")
 I once told a joke to a friend, but it didn't work. He just looked
 ```
 
+### Web Loader
+
+[Web loader - langchain](https://python.langchain.com/docs/use_cases/question_answering/)을 이용하여 web page를 loading 할 수 있습니다.
+
+```python
+from langchain.document_loaders import WebBaseLoader
+from langchain.indexes import VectorstoreIndexCreator
+
+loader = WebBaseLoader("https://lilianweng.github.io/posts/2023-06-23-agent/")
+index = VectorstoreIndexCreator().from_loaders([loader])
+```
 
 ### Prompt Template
 
